@@ -29,7 +29,7 @@ const SlideFoods: React.FC<SlideFoodsI> = () => {
     const foodCategory = useFoods()?.category
     const dispatch = useDispatch()
     return (
-        <section className="pl-16 pr-16 mt-10 pb-10 flex items-center gap-3">
+        <section className="pt-6 pl-2  md:pl-16 md:pr-16 mt-10 pb-10 flex items-center gap-3">
             {
                 SlideFoodData.map((item, index) => {
                     return <div onClick={()=>dispatch(setCategory(item.key))} key={index} className={`w-[126px] flex font-nunito cursor-pointer  items-center justify-center pb-[9px] rounded-3xl gap-2 pl-4 pr-4 pt-[9px] ${foodCategory === item.key ? "bg-color1" : "bg-white"}`}> {item.icon} {item.title}</div>
