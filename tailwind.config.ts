@@ -10,12 +10,12 @@ export default {
     extend: {
       colors: {
         color1: "#FFAB08",
-        color2:"#FF5C00",
-        color3:'#F9F9F9',
+        color2: "#FF5C00",
+        color3: '#F9F9F9',
       },
       fontFamily: {
         nunito: ['"Nunito"', 'sans-serif']
-      }
+      },
     },
   },
   plugins: [],
