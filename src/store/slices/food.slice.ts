@@ -1,10 +1,11 @@
+import { FoodsData } from "@/utils/data";
 import { createSlice } from "@reduxjs/toolkit";
 import { StaticImageData } from "next/image";
 
 export interface FoodI {
     id: number
     title: string
-    price: string
+    price: number
     image: StaticImageData
     gram: string
     category: string
@@ -13,7 +14,7 @@ export interface InitialStateFoodI {
     category: string
     staticData: FoodI[]
 }
-const initialState: InitialStateFoodI = { category: "бургеры", staticData: [] }
+const initialState: InitialStateFoodI = { category: "бургеры", staticData: FoodsData }
 
 const FoodSlice = createSlice({
     name: "food",
