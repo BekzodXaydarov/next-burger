@@ -1,0 +1,8 @@
+.hero {
+
+    @media screen and (max-width:400px) {
+        svg {
+            width: 175px !important;
+        }
+    }
+}
