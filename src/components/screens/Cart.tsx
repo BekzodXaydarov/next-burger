@@ -28,8 +28,7 @@ const Cart: React.FC<CartI> = ({ }) => {
                     cart.length === 0 ? <p className="mt-4 font-nunito">Тут пока пусто {":("}</p> : <div>
                         {
                             cart.map((item, index) => {
-                                return <>
-                                    <div key={index} className="w-full flex items-center justify-between mt-2">
+                                return  <div key={index} className="w-full flex items-center justify-between mt-2">
                                         <div className="flex items-center gap-1">
                                             <Image className="w-[64px] h-[52px]" src={item.image} alt={item.title} />
                                             <div>
@@ -43,9 +42,8 @@ const Cart: React.FC<CartI> = ({ }) => {
                                             <p>{item.quantity}</p>
                                             <button className="h-full flex items-center justify-center" onClick={() => dispatch(addProduct(item))}>+</button>
                                         </div>
-                                    </div>
                                     <hr className="mt-3" />
-                                </>
+                                    </div>
                             })
                         }
                         <p className="font-nunito font-[400] text-[16px] flex items-center justify-between w-full mt-4">Итого <span>{total}₽</span></p>

@@ -25,7 +25,7 @@ const SlideFoodData: SlideFoodItemI[] = [
     {
         title:"Хот-доги",
         icon: <Svgcomponent name="icon2" />,
-        key:"хот-доги"
+        key:"хот-дог"
     },
     {
         title:"Комбо",
@@ -56,8 +56,10 @@ const SlideFoods: React.FC<SlideFoodsI> = () => {
     return (
         <section className="pt-6 pl-2  md:pl-16 md:pr-16 mt-10 pb-10 flex items-center gap-[24px] overflow-x-auto w-auto">
             {
-                SlideFoodData.map((item, index) => {
-                    return <div onClick={()=>dispatch(setCategory(item.key))} key={index} className={`w-auto flex font-nunito cursor-pointer  items-center justify-center pb-[9px] rounded-3xl gap-2 pl-4 pr-4 pt-[9px] ${foodCategory === item.key ? "bg-color1" : "bg-white"}`}> {item.icon} {item.title}</div>
+                SlideFoodData.map((item, index) => {    
+                    return <div onClick={()=>{
+                        dispatch(setCategory(item.key))
+                    }} key={index} className={`w-auto flex font-nunito cursor-pointer  items-center justify-center pb-[9px] rounded-3xl gap-2 pl-4 pr-4 pt-[9px] ${foodCategory === item.key ? "bg-color1" : "bg-white"}`}> {item.icon} {item.title}</div>
                 })
             }
         </section>

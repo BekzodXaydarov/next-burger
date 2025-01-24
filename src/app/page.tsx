@@ -1,6 +1,7 @@
-import Cart from '@/components/screens/Cart'
+ import Cart from '@/components/screens/Cart'
 import Foods from '@/components/screens/Foods'
 import Hero from '@/components/screens/Hero'
+import ModalContainer from '@/components/screens/ModalContainer'
 import SlideFoods from '@/components/screens/SlideFoods'
 import React from 'react'
 
@@ -14,6 +15,8 @@ const Home: React.FC<HomeI> = ({ }) => {
         <Cart />
         <Foods />
       </section>
+      <ModalContainer />
+    
     </main>
   )
 }
