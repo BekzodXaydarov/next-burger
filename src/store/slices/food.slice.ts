@@ -9,6 +9,9 @@ export interface FoodI {
     image: StaticImageData
     gram: string
     category: string
+    description:string
+    foodDetails: string[]
+    quantity: number
 }
 export interface InitialStateFoodI {
     category: string

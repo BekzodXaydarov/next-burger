@@ -25,7 +25,7 @@ const Foods: React.FC<FoodsI> = ({ }) => {
                         foods.map((item, index) => {
                             return <div className="w-full md:w-[300px]  bg-white p-1" key={index}>
                                 <div onClick={()=>dispatch(openModal({modalName:"info",adition:{id:item.id}}))} className="cursor-pointer">
-                                    <Image src={item.image} alt={item.title} />
+                                    <Image src={item.image} alt={item.title} className="w-full" />
                                     <h3 className="font-nunito font-[600] text-[16px] mt-3 md:text-[24px]">{item.price}₽</h3>
                                     <h4 className="mt-1 font-nunito text-[12px] font-[400] md:text-[16px]">{item.title}</h4>
                                     <p className="mt-4 text-color5 font-nunito font-[600] text-[12px] md:text-[16px]">{item.gram}</p>
