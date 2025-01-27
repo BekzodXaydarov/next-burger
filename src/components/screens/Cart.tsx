@@ -2,6 +2,7 @@
 
 import { Svgcomponent } from "@/assets/svgs";
 import { addProduct, MinusQuantity } from "@/store/slices/cart.slice";
+import { openModal } from "@/store/slices/modal.slice";
 import { useCart } from "@/store/useSelector"
 import Image from "next/image";
 import { useState } from "react";
@@ -42,12 +43,11 @@ const Cart: React.FC<CartI> = ({ }) => {
                                             <p>{item.quantity}</p>
                                             <button className="h-full flex items-center justify-center" onClick={() => dispatch(addProduct(item))}>+</button>
                                         </div>
-                                    <hr className="mt-3" />
                                     </div>
                             })
                         }
-                        <p className="font-nunito font-[400] text-[16px] flex items-center justify-between w-full mt-4">Итого <span>{total}₽</span></p>
-                        <button className="w-full mt-6 bg-color2 h-[40px] rounded-lg text-white font-nunito">Оформить заказ</button>
+                        <p className="font-nunito fonSt-[400] text-[16px] flex items-center justify-between w-full mt-4">Итого <span>{total}₽</span></p>
+                        <button className="w-full mt-6 bg-color2 h-[40px] rounded-lg text-white font-nunito" onClick={()=>dispatch(openModal({modalName:"order"}))}>Оформить заказ</button>
                         <div className="w-full flex items-center justify-between mt-3">
                             <p className="flex items-center gap-2 font-nunito font-[400] "> <Svgcomponent name="icon7" /> Бесплатная доставка </p>
                             <p className="font-nunito text-color5 cursor-pointer" onClick={() => setOpen(false)}>Свернуть</p>

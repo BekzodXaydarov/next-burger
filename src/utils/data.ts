@@ -2,6 +2,7 @@ import { FoodI } from "@/store/slices/food.slice";
 import Burger from "@/assets/images/burger.png"
 import HotDog from '@/assets/images/hot-dog.png'
 import InfoFood from '@/components/modals/InfoFood'
+import Order from "@/components/modals/Order";
 
 // category: бургеры закуски хот-доги комбо шаурма пицца вок
 
@@ -190,5 +191,9 @@ export const ModalsData: ModalsDataI[] = [
     {
         name: "info",
         Component: InfoFood
+    },
+    {
+        name:"order",
+        Component: Order
     }
 ]

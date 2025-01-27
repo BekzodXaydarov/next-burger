@@ -5,6 +5,7 @@ import { openModal } from "@/store/slices/modal.slice";
 import { useFoods } from "@/store/useSelector"
 import Image from "next/image";
 import { useMemo } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
 export interface FoodsI { }
@@ -30,7 +31,10 @@ const Foods: React.FC<FoodsI> = ({ }) => {
                                     <h4 className="mt-1 font-nunito text-[12px] font-[400] md:text-[16px]">{item.title}</h4>
                                     <p className="mt-4 text-color5 font-nunito font-[600] text-[12px] md:text-[16px]">{item.gram}</p>
                                 </div>
-                                <button className="mt-[7px] bg-color4 w-full h-[30px] font-nunito font-[400] text-[12px] flex items-center justify-center rounded-lg md:text-[16px] md:h-[40px]" onClick={() => dispatch(addProduct(item))}>Добавить</button>
+                                <button className="mt-[7px] bg-color4 w-full h-[30px] font-nunito font-[400] text-[12px] flex items-center justify-center rounded-lg md:text-[16px] md:h-[40px]" onClick={() => {
+                                    dispatch(addProduct(item))
+                                    toast.success("food cartga qo`shildi")
+                                }}>Добавить</button>
                             </div>
                         })
                         : null

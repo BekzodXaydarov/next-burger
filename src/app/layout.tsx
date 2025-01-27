@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/screens/Header";
 import Footer from "@/components/screens/Footer";
 import ReduxProvider from "@/store/ReduxProvider";
+import { Toaster } from "react-hot-toast";
 
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Toaster />
         </ReduxProvider>
       </body>
     </html>

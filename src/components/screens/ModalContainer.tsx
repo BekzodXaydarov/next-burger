@@ -23,14 +23,14 @@ const ModalContainer: React.FC<ModalContainerI> = ({ }) => {
                 dispatch(closeModal({}))
             }
         }}>
-            <div className="w-full bg-white h-full md:w-[684px] md:h-[432px] md:rounded-[24px] pt-8 pl-2 pb-8 pr-2 relative" onClick={(e) => e.stopPropagation()}>
+            <section className="w-full bg-white h-full sm:w-[524px] sm:h-[324px] md:w-[40%] md:h-[50%] sm:rounded-[24px] pt-8 pl-2 pb-8 pr-2 relative" onClick={(e) => e.stopPropagation()}>
                 <button className="absolute top-3 right-3" onClick={()=>dispatch(closeModal({}))}> <Svgcomponent name="close" /> </button>
                 {modalData?.Component ? (
                     <modalData.Component  />
                 ) : (
                     <span>Modal is not defined</span>
                 )}
-            </div>
+            </section>
         </article>
     )
 }
