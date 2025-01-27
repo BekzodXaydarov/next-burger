@@ -11,10 +11,10 @@ export interface initialStateCartI {
 }
 
 const getInitialCartState = (): initialStateCartI[] => {
-        const storedCart = localStorage.getItem("cart");
-        return storedCart ? JSON.parse(storedCart) : [];
+    if (typeof window === "undefined") return [];
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
 };
-
 
 const initialState: initialStateCartI[] = getInitialCartState()
 
