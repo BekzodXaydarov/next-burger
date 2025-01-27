@@ -26,11 +26,15 @@ const CartSlice = createSlice({
             const excitedFood = state.filter((item) => item.id === payload.id)
             if (excitedFood.length > 0) {
                 state = state.map((item) => item.id === payload.id ? { ...item, quantity: payload.quantity + 1 } : item)
-                localStorage.setItem("cart", JSON.stringify(state))
+                if (typeof window !== "undefined") {
+                    localStorage.setItem("cart", JSON.stringify(state));
+                }
                 return state
             } else {
                 state.push({ ...payload })
-                localStorage.setItem("cart", JSON.stringify(state))
+                if (typeof window !== "undefined") {
+                    localStorage.setItem("cart", JSON.stringify(state));
+                }
                 return state
             }
         },
@@ -42,17 +46,21 @@ const CartSlice = createSlice({
             const excitedFood = state.filter((item) => item.id === payload.id)
             if (excitedFood.length > 0) {
                 state = state.map((item) => item.id === payload.id ? { ...item, quantity: item.quantity - 1 } : item).filter((item) => item.quantity > 0)
-                localStorage.setItem("cart", JSON.stringify(state))
+                if (typeof window !== "undefined") {
+                    localStorage.setItem("cart", JSON.stringify(state));
+                }
                 return state
             }
         },
-        clearCart: (state,_)=>{
+        clearCart: (state, _) => {
             state = []
-            localStorage.removeItem("cart")
+            if (typeof window !== "undefined") {
+                localStorage.removeItem("cart");
+            }
             return state
         }
     }
 })
 
-export const { addProduct, deleteProduct, MinusQuantity,clearCart } = CartSlice.actions
+export const { addProduct, deleteProduct, MinusQuantity, clearCart } = CartSlice.actions
 export default CartSlice.reducer
