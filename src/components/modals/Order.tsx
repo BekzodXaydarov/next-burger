@@ -11,7 +11,10 @@ const Order: React.FC<OrderI> = ({ }) => {
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
     const [error, setError] = useState(false)
-    
+    const [place, setPlace] = useState("")
+    const [floor, setFloor] = useState("")
+    const [phoneHome, setPhoneHome] = useState("")
+
     const dispatch = useDispatch()
 
     // 
@@ -26,6 +29,34 @@ const Order: React.FC<OrderI> = ({ }) => {
                 toast.error("phone ni to`liq kiriting")
                 setError(true)
             } else {
+                toast.success("dastavka keti")
+                setName("")
+                setPhone("")
+                dispatch(clearCart({}))
+                dispatch(closeModal({}))
+            }
+        } else {
+            if (name === "") {
+                toast.error("nameni kiriting")
+                setError(true)
+            }
+            else if (phone === "" || phone.replace("_", "").length !== 17) {
+                toast.error("phone ni to`liq kiriting")
+                setError(true)
+            }
+            else if (place === "") {
+                toast.error("placeni kiriting")
+                setError(true)
+            }
+            else if (floor === "") {
+                toast.error("floorni kiriting")
+                setError(true)
+            }
+            else if (phoneHome === "") {
+                toast.error("phone numberni kiriting")
+                setError(true)
+            }
+            else {
                 toast.success("dastavka keti")
                 setName("")
                 setPhone("")
@@ -61,10 +92,18 @@ const Order: React.FC<OrderI> = ({ }) => {
                     </div>
                     {
                         check == "check2" ? <div className="mt-6">
-                            <input type="text" placeholder="Улица, дом, квартира" className="w-full h-[40px] mt-5 border-2 border-color4 p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none" />
+                            <input type="text" placeholder="Улица, дом, квартира" className={`w-full h-[40px] mt-5 border-2 ${error ? place === "" ? "border-red-600" : 'border-color4' : "border-color4"} p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none`} value={place} onChange={(e) => setPlace(e.target.value)} />
                             <div>
-                                <input type="text" placeholder="Этаж" className="w-[50%] h-[40px] mt-5 border-2 border-color4 p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none" />
-                                <input type="text" placeholder="Домофон" className="w-[50%] h-[40px] mt-5 border-2 border-color4 p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none" />
+                                <input type="text" placeholder="Этаж" className={`w-[50%] h-[40px] mt-5 border-2 ${error ? floor === "" ? "border-red-600" : "border-color4" : "border-color4"} p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none`} value={floor} onChange={(e) => setFloor(e.target.value)} />
+                                <PatternFormat
+                                    format="+998 ## ### ## ##"
+                                    placeholder="Домофон"
+                                    mask="_"
+                                    name="Телефон"
+                                    value={phoneHome}
+                                    onChange={(e) => setPhoneHome(e.target.value)}
+                                    className={`w-full h-[40px] mt-5 border-2 ${error ? phoneHome === "" ? "border-red-600 text-red-600" : "border-color4" : "border-color4"} p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none`}
+                                />
                             </div>
                         </div> : null
                     }
