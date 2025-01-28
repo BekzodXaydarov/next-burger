@@ -59,7 +59,7 @@ const SlideFoods: React.FC<SlideFoodsI> = () => {
                 SlideFoodData.map((item, index) => {    
                     return <div onClick={()=>{
                         dispatch(setCategory(item.key))
-                    }} key={index} className={`w-auto flex font-nunito cursor-pointer  items-center justify-center pb-[9px] rounded-3xl gap-2 pl-4 pr-4 pt-[9px] ${foodCategory === item.key ? "bg-color1" : "bg-white"}`}> {item.icon} {item.title}</div>
+                    }} key={index} className={`min-w-40 flex font-nunito cursor-pointer  items-center justify-center pb-[9px] rounded-3xl gap-2 pl-4 pr-4 pt-[9px] ${foodCategory === item.key ? "bg-color1" : "bg-white"}`}> {item.icon} {item.title}</div>
                 })
             }
         </section>
