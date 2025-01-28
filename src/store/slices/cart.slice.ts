@@ -25,39 +25,42 @@ const CartSlice = createSlice({
         addProduct: (state, { payload }) => {
             const excitedFood = state.filter((item) => item.id === payload.id)
             if (excitedFood.length > 0) {
-                state = state.map((item) => item.id === payload.id ? { ...item, quantity: payload.quantity + 1 } : item)
-                if (typeof window !== "undefined") {
+                state = state.map((item) => item.id === excitedFood[0].id ? { ...item, quantity: excitedFood[0].quantity + 1 } : item)
+                if(typeof window !== "undefined"){
                     localStorage.setItem("cart", JSON.stringify(state));
+                    return state
                 }
-                return state
             } else {
                 state.push({ ...payload })
-                if (typeof window !== "undefined") {
+                if(typeof window !== "undefined"){
                     localStorage.setItem("cart", JSON.stringify(state));
+                    return state
                 }
-                return state
             }
         },
         deleteProduct: (state, { payload }) => {
             state = state.filter((item) => item.id !== payload.id)
-            return state
+            if(typeof window !== "undefined"){
+                localStorage.setItem("cart", JSON.stringify(state));
+                return state
+            }
         },
         MinusQuantity: (state, { payload }) => {
             const excitedFood = state.filter((item) => item.id === payload.id)
             if (excitedFood.length > 0) {
                 state = state.map((item) => item.id === payload.id ? { ...item, quantity: item.quantity - 1 } : item).filter((item) => item.quantity > 0)
-                if (typeof window !== "undefined") {
+                if(typeof window !== "undefined"){
                     localStorage.setItem("cart", JSON.stringify(state));
+                    return state
                 }
-                return state
             }
         },
         clearCart: (state, _) => {
             state = []
-            if (typeof window !== "undefined") {
-                localStorage.removeItem("cart");
+            if(typeof window !== "undefined"){
+                localStorage.setItem("cart", JSON.stringify(state));
+                return state
             }
-            return state
         }
     }
 })

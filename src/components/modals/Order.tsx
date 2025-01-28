@@ -67,7 +67,7 @@ const Order: React.FC<OrderI> = ({ }) => {
     }
     return (
         <>
-            <form className="flex justify-between flex-col h-full pb-8" onSubmit={handleSubmit}>
+            <form className="flex justify-between flex-col h-full pb-8 md:p-0" onSubmit={handleSubmit}>
                 <div>
                     <h1 className="font-nunito text-[28px]">
                         Доставка
@@ -93,7 +93,7 @@ const Order: React.FC<OrderI> = ({ }) => {
                     {
                         check == "check2" ? <div className="mt-6">
                             <input type="text" placeholder="Улица, дом, квартира" className={`w-full h-[40px] mt-5 border-2 ${error ? place === "" ? "border-red-600" : 'border-color4' : "border-color4"} p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none`} value={place} onChange={(e) => setPlace(e.target.value)} />
-                            <div>
+                            <div className="flex">
                                 <input type="text" placeholder="Этаж" className={`w-[50%] h-[40px] mt-5 border-2 ${error ? floor === "" ? "border-red-600" : "border-color4" : "border-color4"} p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none`} value={floor} onChange={(e) => setFloor(e.target.value)} />
                                 <PatternFormat
                                     format="+998 ## ### ## ##"
@@ -102,13 +102,13 @@ const Order: React.FC<OrderI> = ({ }) => {
                                     name="Телефон"
                                     value={phoneHome}
                                     onChange={(e) => setPhoneHome(e.target.value)}
-                                    className={`w-full h-[40px] mt-5 border-2 ${error ? phoneHome === "" ? "border-red-600 text-red-600" : "border-color4" : "border-color4"} p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none`}
+                                    className={`w-[50%] h-[40px] mt-5 border-2 ${error ? phoneHome === "" ? "border-red-600 text-red-600" : "border-color4" : "border-color4"} p-3 rounded-md text-color5 font-nunito text-[10px] border-solid outline-none`}
                                 />
                             </div>
                         </div> : null
                     }
                 </div>
-                <button className="w-full h-[40px] bg-color2 rounded-lg font-nunito text-[12px] text-white" type="submit">Оформить</button>
+                <button className="w-full h-[40px] bg-color2 rounded-lg font-nunito text-[12px] text-white mt-2" type="submit">Оформить</button>
             </form>
         </>
     )
